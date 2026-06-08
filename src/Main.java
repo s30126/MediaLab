@@ -24,8 +24,13 @@ public class Main {
         equipment.add(e3);
         equipment.add(e4);
 
-        e1.getDisplayText();
+        ReservationService myService = new ReservationService(new LoyaltyDiscountPolicy());
 
+        myService.setStudents(students);
+        myService.setEquipment(equipment);
+
+        myService.createReservation("S001", "E001", 4);
+        myService.returnEquipment(1);
 
     }
 }

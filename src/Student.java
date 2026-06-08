@@ -27,4 +27,8 @@ public class Student {
         return loyaltyPoints;
     }
 
+    public void setLoyaltyPoints(int loyaltyPoints) {
+        this.loyaltyPoints = loyaltyPoints;
+    }
+
 }
