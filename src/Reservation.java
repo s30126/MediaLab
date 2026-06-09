@@ -26,10 +26,6 @@ public class Reservation implements Displayable {
         return equipment;
     }
 
-    public int getDays() {
-        return days;
-    }
-
     public ReservationStatus getStatus() {
         return status;
     }

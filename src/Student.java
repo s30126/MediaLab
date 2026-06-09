@@ -19,10 +19,6 @@ public class Student {
         return fullName;
     }
 
-    public String getGroupName() {
-        return groupName;
-    }
-
     public int getLoyaltyPoints() {
         return loyaltyPoints;
     }
