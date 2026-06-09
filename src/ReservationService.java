@@ -10,12 +10,16 @@ public class ReservationService {
         return equipment;
     }
 
-    public void setStudents(ArrayList<Student> students) {
-        this.students = students;
-    }
-
     public void setEquipment(ArrayList<Equipment> equipment) {
         this.equipment = equipment;
+    }
+
+    public ArrayList<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setStudents(ArrayList<Student> students) {
+        this.students = students;
     }
 
     public ReservationService(DiscountPolicy discountPolicy) {
@@ -110,4 +114,63 @@ public class ReservationService {
         System.out.println("Zwrócono sprzęt. Student otrzymuje " + points + " pkt lojalnościowych.");
 
     }
+
+    public void showActiveReservations() {
+        System.out.println("Aktywne rezerwacje: ");
+        for (Reservation r : reservations) {
+            if (r.getStatus() == ReservationStatus.ACTIVE) {
+                System.out.println(r.getDisplayText());
+            }
+        }
+    }
+
+    public void showReturnedReservations() {
+        System.out.println("Zakończone rezerwacje: ");
+        for (Reservation r : reservations) {
+            if (r.getStatus() == ReservationStatus.RETURNED) {
+                System.out.println(r.getDisplayText());
+            }
+        }
+    }
+
+    public void showRevenue() {
+
+        double revenue = 0;
+
+        for (Reservation r : reservations) {
+            if (r.getStatus() == ReservationStatus.RETURNED) {
+                revenue += r.calculateTotalCost(discountPolicy);
+            }
+        }
+
+        System.out.println("Łączny przychód z zakończonych rezerwacji: " + revenue + " zł.");
+
+    }
+
+    public void showStudentWithMostPoints() {
+
+        Student mostPoints = students.getFirst();
+
+        for (Student s : students) {
+            if (s.getLoyaltyPoints() > mostPoints.getLoyaltyPoints()) {
+                mostPoints = s;
+            }
+        }
+
+        System.out.println("Student z największą liczbą punktów lojalnościowych: " +
+                mostPoints.getFullName() + " (" + mostPoints.getLoyaltyPoints() +
+                " pkt).");
+
+    }
+
+    public void printReport() {
+        System.out.println("RAPORT");
+        showActiveReservations();
+        showReturnedReservations();
+        showRevenue();
+        showStudentWithMostPoints();
+    }
+
+
+
 }

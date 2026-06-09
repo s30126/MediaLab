@@ -1,10 +1,10 @@
 public class Reservation implements Displayable {
 
-    public int id;
-    public Student student;
-    public Equipment equipment;
-    public int days;
-    public ReservationStatus status;
+    private int id;
+    private Student student;
+    private Equipment equipment;
+    private int days;
+    private ReservationStatus status;
 
     public Reservation(int id, Student student, Equipment equipment, int days, ReservationStatus status) {
         this.id = id;
@@ -45,7 +45,10 @@ public class Reservation implements Displayable {
 
     @Override
     public String getDisplayText() {
-        return null;
+        return "Rezerwacja nr " + id +
+                " {student: " + student.getFullName() +
+                ", sprzęt: " + equipment.getName() +
+                ", status: " + status + "}";
     }
 
 }

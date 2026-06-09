@@ -43,10 +43,10 @@ public abstract class Equipment implements Displayable {
     @Override
     public String getDisplayText() {
         return "Sprzęt " + getId() +
-                "{nazwa: " + getName() +
+                " {nazwa: " + getName() +
                 ", typ sprzętu: " + getEquipmentType() +
                 ", cena za dzień: " + calculateDailyPrice() +
-                ", dostępny?: " + isAvailable() + "}";
+                ", dostępność: " + isAvailable() + "}";
     }
 
 }
